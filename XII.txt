@@ -1,0 +1,39 @@
+import pandas as pd
+
+df = pd.read_csv("/content/drive/MyDrive/BE_dataset_DMV/Retail_Sales_Data.csv")
+
+# Display the first few rows
+df.head()
+
+# Get basic statistics
+df.describe()
+
+# Check for missing values
+df.isnull().sum()
+
+
+# Check data types
+df.dtypes
+
+import matplotlib.pyplot as plt
+
+region_sales.plot(kind='bar')
+plt.title("Sales Distribution by Region")
+plt.xlabel("Region")
+plt.ylabel("Total Sales Amount")
+plt.show()
+
+top_region = region_sales.idxmax()
+print("Top-Performing Region:", top_region)
+
+region_category_sales = df.groupby(['Region', 'Product Category'])['Sales Amount'].sum()
+print(region_category_sales)
+
+region_category_sales.unstack().plot(kind='bar', stacked=True)
+plt.title("Sales by Region and Product Category")
+plt.xlabel("Region")
+plt.ylabel("Total Sales Amount")
+plt.show()
+
+# Check data types
+df.dtypes
